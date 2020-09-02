@@ -34,7 +34,7 @@ public class BikeFragment extends Fragment {
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getActivity(), 2);
         recyclerView.setLayoutManager(layoutManager);
 
-        RecyclerView.Adapter mAdapter = new RideAdapter(mDataset);
+        RecyclerView.Adapter mAdapter = new BikeAdapter(mDataset);
         recyclerView.setAdapter(mAdapter);
         return view;
     }
