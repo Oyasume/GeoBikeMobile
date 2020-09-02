@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:id="@+id/MapViewWithLayers"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
+            <org.osmdroid.views.MapView
+                android:id="@+id/mapview"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:foregroundGravity="top|fill_horizontal">
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|right"
+                android:layout_marginRight="@dimen/map_button_margin"
+                android:layout_marginBottom="@dimen/map_button_margin">
+
+                <ImageButton
+                    android:id="@+id/map_my_location_button"
+                    android:layout_width="@dimen/map_small_button_size"
+                    android:layout_height="@dimen/map_small_button_size"
+                    android:layout_gravity="bottom"
+                    android:background="@drawable/btn_circle_blue"
+                    android:contentDescription="@string/shared_string_my_location"
+                    android:src="@drawable/map_my_location" />
+            </FrameLayout>
+        </FrameLayout>
+
+    </FrameLayout>
+</LinearLayout>
