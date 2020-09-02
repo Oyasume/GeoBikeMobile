@@ -6,13 +6,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.geobike.R;
 
-public class StatisticsFragment extends Fragment {
+public class RideFragment extends Fragment {
 
-    public static StatisticsFragment newInstance() {
-        return (new StatisticsFragment());
+
+    public static RideFragment newInstance() {
+        return (new RideFragment());
     }
 
     @Override
@@ -22,6 +25,8 @@ public class StatisticsFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.statistics_fragment, container, false);
+        View view = inflater.inflate(R.layout.ride_fragment, container, false);
+
+        return view;
     }
 }

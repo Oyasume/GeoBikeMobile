@@ -1,6 +1,5 @@
 package com.example.geobike.MainFragment;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -23,7 +22,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
                 fragment = new MapFragment();
                 break;
             case 1:
-                fragment = new StatisticsFragment();
+                fragment = new RideFragment();
                 break;
             case 2:
                 fragment = new BikeFragment();
@@ -46,7 +45,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
             case 0:
                 return "Map";
             case 1:
-                return "Statistics";
+                return "Ride";
             case 2:
                 return "Bike";
             case 3:
