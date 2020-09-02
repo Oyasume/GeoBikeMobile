@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">GeoBike</string>
-    <string name="shared_string_my_location">My Position</string>
+    <string name="shared_string_my_location">Ma position</string>
 </resources>

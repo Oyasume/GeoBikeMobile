@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="map_small_button_size">44dp</dimen>
+
+    <dimen name="map_button_inset_shadow">2dp</dimen>
+
+    <dimen name="map_button_margin">6dp</dimen>
+
+</resources>
