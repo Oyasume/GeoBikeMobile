@@ -1,4 +1,4 @@
-package com.example.geobike;
+package com.example.geobike.MainFragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+
+import com.example.geobike.R;
 
 public class BikeFragment extends Fragment {
 

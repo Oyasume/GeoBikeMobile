@@ -1,5 +1,6 @@
-package com.example.geobike;
+package com.example.geobike.MainFragment;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;

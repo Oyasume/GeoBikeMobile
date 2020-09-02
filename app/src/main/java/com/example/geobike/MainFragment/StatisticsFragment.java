@@ -1,19 +1,18 @@
-package com.example.geobike;
+package com.example.geobike.MainFragment;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
-public class SettingsFragment extends Fragment {
+import com.example.geobike.R;
 
-    public static SettingsFragment newInstance() {
-        return (new SettingsFragment());
+public class StatisticsFragment extends Fragment {
+
+    public static StatisticsFragment newInstance() {
+        return (new StatisticsFragment());
     }
 
     @Override
@@ -23,6 +22,6 @@ public class SettingsFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.settings_fragment, container, false);
+        return inflater.inflate(R.layout.statistics_fragment, container, false);
     }
 }

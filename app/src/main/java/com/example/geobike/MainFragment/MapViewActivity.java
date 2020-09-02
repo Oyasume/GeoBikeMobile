@@ -1,4 +1,4 @@
-package com.example.geobike;
+package com.example.geobike.MainFragment;
 
 import android.Manifest;
 import android.app.Activity;
@@ -13,6 +13,9 @@ import android.widget.ImageButton;
 
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+
+import com.example.geobike.BuildConfig;
+import com.example.geobike.R;
 
 import org.osmdroid.config.Configuration;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
