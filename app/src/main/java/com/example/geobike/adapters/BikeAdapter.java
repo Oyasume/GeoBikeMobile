@@ -1,14 +1,14 @@
-package com.example.geobike.MainFragment;
+package com.example.geobike.adapters;
 
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.core.view.MotionEventCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.geobike.viewholder.BikeViewHolder;
+import com.example.geobike.others.OnStartDragListener;
 import com.example.geobike.R;
 
 import java.util.ArrayList;
@@ -27,7 +27,7 @@ public class BikeAdapter extends RecyclerView.Adapter<BikeViewHolder> implements
     @NonNull
     @Override
     public BikeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.bike_card,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_bike,parent,false);
         return new BikeViewHolder(view);
     }
 

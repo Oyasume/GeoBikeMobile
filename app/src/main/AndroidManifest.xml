@@ -14,20 +14,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainFragment.MapViewActivity">
+        <activity android:name=".activities.MapViewActivity">
         </activity>
-        <activity android:name=".MainFragment.AProposActivity">
+        <activity android:name=".activities.AProposActivity">
         </activity>
-        <activity android:name=".MainFragment.BikeDetailActivity">
+        <activity android:name=".activities.BikeDetailActivity">
         </activity>
-        <activity android:name=".MainFragment.RideDetailActivity">
+        <activity android:name=".activities.RideDetailActivity">
         </activity>
     </application>
 

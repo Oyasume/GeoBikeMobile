@@ -1,31 +1,28 @@
-package com.example.geobike.MainFragment;
+package com.example.geobike.viewholder;
 
 import android.app.Activity;
 import android.app.ActivityOptions;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.geobike.activities.BikeDetailActivity;
 import com.example.geobike.R;
 
-import org.osmdroid.views.CustomZoomButtonsController;
-import org.osmdroid.views.MapView;
-
-public class RideViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class BikeViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, ItemTouchHelperViewHolder{
 
     public TextView textView;
-    private MapView mapView;
+    public ImageView imageView;
 
-    public RideViewHolder(View itemView) {
+    public BikeViewHolder(View itemView) {
         super(itemView);
         itemView.setOnClickListener(this);
         textView = (TextView) itemView.findViewById(R.id.text);
-        mapView = (MapView) itemView.findViewById(R.id.mapview);
-        mapView.getZoomController().setVisibility(CustomZoomButtonsController.Visibility.NEVER);
-
+        imageView = (ImageView) itemView.findViewById(R.id.image);
     }
 
     public void bind(String text){
@@ -38,14 +35,24 @@ public class RideViewHolder extends RecyclerView.ViewHolder implements View.OnCl
     }
 
     public void animateIntent(View v) {
-        Intent intent = new Intent(v.getContext(), RideDetailActivity.class);
+        Intent intent = new Intent(v.getContext(), BikeDetailActivity.class);
         String transitionName = v.getContext().getString(R.string.transition_string);
-        View viewStart = v.findViewById(R.id.rideCardView);
+        View viewStart = v.findViewById(R.id.bikeCardView);
         ActivityOptions options =
                 ActivityOptions.makeSceneTransitionAnimation((Activity) v.getContext(),
                         viewStart,
                         transitionName
                 );
         v.getContext().startActivity(intent, options.toBundle());
+    }
+
+    @Override
+    public void onItemSelected() {
+        itemView.setBackgroundColor(Color.LTGRAY);
+    }
+
+    @Override
+    public void onItemClear() {
+        itemView.setBackgroundColor(0);
     }
 }

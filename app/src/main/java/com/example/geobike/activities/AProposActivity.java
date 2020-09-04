@@ -1,4 +1,4 @@
-package com.example.geobike.MainFragment;
+package com.example.geobike.activities;
 
 import android.app.Activity;
 

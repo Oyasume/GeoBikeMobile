@@ -1,4 +1,4 @@
-package com.example.geobike.MainFragment;
+package com.example.geobike.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -17,7 +17,7 @@ public class RideDetailActivity extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.ride_detail_activity);
+        setContentView(R.layout.activity_ride_detail);
 
         mapView = (MapView) findViewById(R.id.mapview);
         mapView.getZoomController().setVisibility(CustomZoomButtonsController.Visibility.NEVER);

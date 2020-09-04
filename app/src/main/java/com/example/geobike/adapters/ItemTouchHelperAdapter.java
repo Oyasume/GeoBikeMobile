@@ -1,4 +1,4 @@
-package com.example.geobike.MainFragment;
+package com.example.geobike.adapters;
 
 /**
  * Interface to listen for a move or dismissal event from a {@link ItemTouchHelper.Callback}.

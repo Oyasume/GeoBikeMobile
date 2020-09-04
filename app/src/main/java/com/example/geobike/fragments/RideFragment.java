@@ -1,4 +1,4 @@
-package com.example.geobike.MainFragment;
+package com.example.geobike.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.geobike.adapters.RideAdapter;
 import com.example.geobike.R;
 
 public class RideFragment extends Fragment {
@@ -26,7 +27,7 @@ public class RideFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.ride_fragment, container, false);
+        View view = inflater.inflate(R.layout.fragment_ride, container, false);
 
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(true);

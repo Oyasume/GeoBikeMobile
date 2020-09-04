@@ -1,11 +1,12 @@
-package com.example.geobike;
+package com.example.geobike.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 
-import com.example.geobike.MainFragment.SectionsPagerAdapter;
+import com.example.geobike.adapters.SectionsPagerAdapter;
+import com.example.geobike.R;
 import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity {

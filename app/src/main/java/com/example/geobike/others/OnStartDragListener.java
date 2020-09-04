@@ -1,4 +1,4 @@
-package com.example.geobike.MainFragment;
+package com.example.geobike.others;
 
 import androidx.recyclerview.widget.RecyclerView;
 

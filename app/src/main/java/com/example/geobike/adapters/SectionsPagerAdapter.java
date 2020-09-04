@@ -1,8 +1,13 @@
-package com.example.geobike.MainFragment;
+package com.example.geobike.adapters;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+
+import com.example.geobike.fragments.BikeFragment;
+import com.example.geobike.fragments.MapFragment;
+import com.example.geobike.fragments.RideFragment;
+import com.example.geobike.fragments.SettingsFragment;
 
 /**
  * A {@link FragmentPagerAdapter} that returns a fragment corresponding to

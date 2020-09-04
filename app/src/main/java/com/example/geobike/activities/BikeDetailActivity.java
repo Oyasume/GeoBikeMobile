@@ -1,4 +1,4 @@
-package com.example.geobike.MainFragment;
+package com.example.geobike.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -12,7 +12,7 @@ public class BikeDetailActivity extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.bike_detail_activity);
+        setContentView(R.layout.activity_bike_detail);
 
 
     }

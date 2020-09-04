@@ -1,10 +1,13 @@
-package com.example.geobike.MainFragment;
+package com.example.geobike.others;
 
 import android.graphics.Canvas;
 
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.geobike.adapters.ItemTouchHelperAdapter;
+import com.example.geobike.viewholder.ItemTouchHelperViewHolder;
 
 /**
  * An implementation of {@link ItemTouchHelper.Callback} that enables basic drag & drop and

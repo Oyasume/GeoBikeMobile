@@ -1,4 +1,4 @@
-package com.example.geobike.MainFragment;
+package com.example.geobike.viewholder;
 
 /**
  * Interface to notify an item ViewHolder of relevant callbacks from {@link

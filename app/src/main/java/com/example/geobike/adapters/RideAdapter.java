@@ -1,4 +1,4 @@
-package com.example.geobike.MainFragment;
+package com.example.geobike.adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.geobike.viewholder.RideViewHolder;
 import com.example.geobike.R;
 
 
@@ -20,7 +21,7 @@ public class RideAdapter extends RecyclerView.Adapter<RideViewHolder> {
     @NonNull
     @Override
     public RideViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.ride_card,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_ride,parent,false);
         return new RideViewHolder(view);
     }
 
