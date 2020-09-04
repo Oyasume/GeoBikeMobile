@@ -3,6 +3,7 @@ package com.example.geobike.MainFragment;
 import android.app.Activity;
 import android.app.ActivityOptions;
 import android.content.Intent;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -15,10 +16,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.geobike.MainActivity;
 import com.example.geobike.R;
 
-public class BikeViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+public class BikeViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, ItemTouchHelperViewHolder{
 
     public TextView textView;
-    private ImageView imageView;
+    public ImageView imageView;
 
     public BikeViewHolder(View itemView) {
         super(itemView);
@@ -46,5 +47,15 @@ public class BikeViewHolder extends RecyclerView.ViewHolder implements View.OnCl
                         transitionName
                 );
         v.getContext().startActivity(intent, options.toBundle());
+    }
+
+    @Override
+    public void onItemSelected() {
+        itemView.setBackgroundColor(Color.LTGRAY);
+    }
+
+    @Override
+    public void onItemClear() {
+        itemView.setBackgroundColor(0);
     }
 }

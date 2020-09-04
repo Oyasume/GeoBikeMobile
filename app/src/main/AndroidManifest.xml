@@ -27,6 +27,8 @@
         </activity>
         <activity android:name=".MainFragment.BikeDetailActivity">
         </activity>
+        <activity android:name=".MainFragment.RideDetailActivity">
+        </activity>
     </application>
 
 </manifest>
