@@ -2,4 +2,5 @@
 <resources>
     <string name="app_name">GeoBike</string>
     <string name="shared_string_my_location">My Position</string>
+    <string name="transition_string" translatable="false">hello</string>
 </resources>
