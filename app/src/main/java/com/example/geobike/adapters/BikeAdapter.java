@@ -1,5 +1,6 @@
 package com.example.geobike.adapters;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,6 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.geobike.models.Bike;
 import com.example.geobike.viewholder.BikeViewHolder;
 import com.example.geobike.others.OnStartDragListener;
 import com.example.geobike.R;
@@ -16,11 +18,11 @@ import java.util.Collections;
 import java.util.List;
 
 public class BikeAdapter extends RecyclerView.Adapter<BikeViewHolder> implements ItemTouchHelperAdapter {
-    private List<String> mItems = new ArrayList<>();
+    private List<Bike> bikeList;
     private final OnStartDragListener mDragStartListener;
 
-    public BikeAdapter(List<String> mItems, OnStartDragListener dragStartListener) {
-        this.mItems = mItems;
+    public BikeAdapter(OnStartDragListener dragStartListener) {
+        this.bikeList = new ArrayList<>();
         mDragStartListener = dragStartListener;
     }
 
@@ -33,7 +35,7 @@ public class BikeAdapter extends RecyclerView.Adapter<BikeViewHolder> implements
 
     @Override
     public void onBindViewHolder(@NonNull final BikeViewHolder holder, int position) {
-        holder.bind(mItems.get(position));
+        holder.bind(bikeList.get(position));
         holder.imageView.setOnLongClickListener(new View.OnLongClickListener(){
             @Override
             public boolean onLongClick(View v) {
@@ -46,19 +48,26 @@ public class BikeAdapter extends RecyclerView.Adapter<BikeViewHolder> implements
 
     @Override
     public int getItemCount() {
-        return mItems.size();
+        Log.e("bike adapter: ", bikeList.size()+"");
+        return bikeList.size();
+    }
+
+    public void setBikes(List<Bike> bikes){
+        this.bikeList = bikes;
+        notifyDataSetChanged();
     }
 
     @Override
     public boolean onItemMove(int fromPosition, int toPosition) {
-        Collections.swap(mItems, fromPosition, toPosition);
+        Collections.swap(bikeList, fromPosition, toPosition);
         notifyItemMoved(fromPosition, toPosition);
         return true;
     }
 
     @Override
     public void onItemDismiss(int position) {
-        mItems.remove(position);
+        bikeList.remove(position);
         notifyItemRemoved(position);
     }
+
 }
