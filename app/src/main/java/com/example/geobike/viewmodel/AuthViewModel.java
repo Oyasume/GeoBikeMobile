@@ -8,10 +8,13 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.geobike.R;
+import com.example.geobike.formstate.AuthFormState;
 import com.example.geobike.models.JwtToken;
 import com.example.geobike.models.Login;
 import com.example.geobike.models.User;
 import com.example.geobike.repositories.AuthRepository;
+
+import io.reactivex.rxjava3.core.Observable;
 
 public class AuthViewModel extends AndroidViewModel {
 
@@ -26,12 +29,8 @@ public class AuthViewModel extends AndroidViewModel {
         authFormState = new MutableLiveData<>();
     }
 
-    public LiveData<User> login(Login credentials){
-
-
-        authRepository.login(credentials);
-        return authRepository.getAccount();
-
+    public Observable<JwtToken> login(Login credentials){
+        return authRepository.login(credentials);
 
 //        if (result instanceof Result.Success) {
 //            com.example.geobike.activities.data.model.LoggedInUser data = ((Result.Success<LoggedInUser>) result).getData();
@@ -41,6 +40,9 @@ public class AuthViewModel extends AndroidViewModel {
 //        }
     }
 
+    public Observable<User> account(){
+        return  authRepository.getAccount();
+    }
 
     public LiveData<AuthFormState> getAuthFormState() {
         return authFormState;
@@ -70,12 +72,6 @@ public class AuthViewModel extends AndroidViewModel {
 
     // A placeholder password validation check
     private boolean isPasswordValid(String password) {
-        return password != null && password.trim().length() > 5;
+        return password != null && password.trim().length() > 4;
     }
-
-    public LiveData<User> getAccount(){
-        return authRepository.getAccount();
-    }
-
-
 }

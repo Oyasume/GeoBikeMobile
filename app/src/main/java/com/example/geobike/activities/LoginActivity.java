@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -21,15 +22,25 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.geobike.R;
+import com.example.geobike.models.JwtToken;
 import com.example.geobike.models.Login;
 import com.example.geobike.models.User;
-import com.example.geobike.viewmodel.AuthFormState;
+import com.example.geobike.formstate.AuthFormState;
 import com.example.geobike.viewmodel.AuthViewModel;
+
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.annotations.NonNull;
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.core.ObservableSource;
+import io.reactivex.rxjava3.disposables.Disposable;
+import io.reactivex.rxjava3.functions.Function;
+import io.reactivex.rxjava3.schedulers.Schedulers;
+import io.reactivex.rxjava3.subjects.Subject;
 
 public class LoginActivity extends AppCompatActivity {
 
-     private AuthViewModel authViewModel;
-     private ProgressBar loadingProgressBar;
+    private AuthViewModel authViewModel;
+    private ProgressBar loadingProgressBar;
 
 
     @Override
@@ -74,7 +85,7 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                Login credentials = new Login("admin", "adminn", false);
+                Login credentials = new Login("diego", "diego", false);
                 authViewModel.loginDataChanged(credentials);
 //                usernameEditText.getText().toString(),
 //                        passwordEditText.getText().toString()
@@ -88,8 +99,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    Login credentials = new Login("admin", "adminn", false);
-                    authViewModel.login(credentials);
+                    Login credentials = new Login("diego", "diego", false);
+                    login(credentials);
 //                    (usernameEditText.getText().toString(),
 //                            passwordEditText.getText().toString()
                 }
@@ -101,32 +112,46 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 loadingProgressBar.setVisibility(View.VISIBLE);
-                Login credentials = new Login("admin", "adminn", false);
+                Login credentials = new Login("diego", "diego", false);
                 login(credentials);
+
             }
         });
     }
 
-    public void login(Login credentials){
-//        authViewModel.login(credentials).observe(this, jwtToken -> new SessionManager(getApplication()).saveAuthToken(jwtToken.getId_token()));
-        authViewModel.login(credentials).observe(this, new Observer<User>() {
-            @Override
-            public void onChanged(User user) {
-                if(user == null){
-                    return;
-                }
-                loadingProgressBar.setVisibility(View.GONE);
-                setResult(Activity.RESULT_OK);
-                //Complete and destroy login activity once successful
-                Intent intent = new Intent(getApplication(), MainActivity.class);
-                startActivity(intent);
-            }
-        });
+    public void login(Login credentials) {
+        authViewModel.login(credentials)
+                .flatMap(jwtToken -> authViewModel.account())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new io.reactivex.rxjava3.core.Observer<User>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
+                    }
 
+                    @Override
+                    public void onNext(@NonNull User user) {
+                        if (user == null) {
+                            return;
+                        }
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        loadingProgressBar.setVisibility(View.GONE);
+                        setResult(Activity.RESULT_OK);
+                        Intent intent = new Intent(getApplication(), MainActivity.class);
+                        startActivity(intent);
+                    }
+                });
     }
 
     private void updateUiWithUser() { //LoggedInUserView model
-        String welcome = getString(R.string.welcome) ; //+ model.getDisplayName()
+        String welcome = getString(R.string.welcome); //+ model.getDisplayName()
         // TODO : initiate successful logged in experience
         Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
     }
