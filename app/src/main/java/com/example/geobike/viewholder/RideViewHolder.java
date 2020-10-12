@@ -62,49 +62,52 @@ public class RideViewHolder extends RecyclerView.ViewHolder implements View.OnCl
 
 
 
-    public void bind(Ride ride){
+    public void bind(Ride ride) {
         this.ride = ride;
         textView.setText(ride.getName());
+        Log.e("RideViewModel", ride.getName());
 
-        List<GeoPoint> trajet = ride.getLocations().stream()
-                .sorted((o1, o2) -> o1.getId().compareTo(o2.getId()))
-                .map(location -> new GeoPoint(location.getLongitude(), location.getLatitude()))
-                .collect(Collectors.toList());
+        if(ride.getLocations().size() > 0) {
+            List<GeoPoint> trajet = ride.getLocations().stream()
+                    .sorted((o1, o2) -> o1.getDateInstant().compareTo(o2.getDateInstant()))
+                    .map(location -> new GeoPoint(location.getLatitude(), location.getLongitude()))
+                    .collect(Collectors.toList());
 
-        Double maxLat = trajet.stream()
-                .mapToDouble(value1 -> value1.getLatitude())
-                .max().getAsDouble();
+            Double maxLat = trajet.stream()
+                    .mapToDouble(value1 -> value1.getLatitude())
+                    .max().getAsDouble();
 
-        Double maxLong = trajet.stream()
-                .mapToDouble(value1 -> value1.getLongitude())
-                .max().getAsDouble();
+            Double maxLong = trajet.stream()
+                    .mapToDouble(value1 -> value1.getLongitude())
+                    .max().getAsDouble();
 
-        Double minLat = trajet.stream()
-                .mapToDouble(value1 -> value1.getLatitude())
-                .min().getAsDouble();
+            Double minLat = trajet.stream()
+                    .mapToDouble(value1 -> value1.getLatitude())
+                    .min().getAsDouble();
 
-        Double minLong = trajet.stream()
-                .mapToDouble(value1 -> value1.getLongitude())
-                .min().getAsDouble();
+            Double minLong = trajet.stream()
+                    .mapToDouble(value1 -> value1.getLongitude())
+                    .min().getAsDouble();
 
-        Polyline line = new Polyline(mapView);
-        line.setTitle("Un trajet");
-        line.setSubDescription(Polyline.class.getCanonicalName());
-        line.setWidth(10f);
-        line.setColor(Color.RED);
-        line.setPoints(trajet);
-        line.setGeodesic(true);
-        line.setInfoWindow(new BasicInfoWindow(R.layout.bonuspack_bubble, mapView));
+            Polyline line = new Polyline(mapView);
+            line.setTitle("Un trajet");
+            line.setSubDescription(Polyline.class.getCanonicalName());
+            line.setWidth(10f);
+            line.setColor(Color.RED);
+            line.setPoints(trajet);
+            line.setGeodesic(true);
+            line.setInfoWindow(new BasicInfoWindow(R.layout.bonuspack_bubble, mapView));
 
-        mapView.getOverlayManager().add(line);
+            mapView.getOverlayManager().add(line);
 
-        BoundingBox boundingBox = new BoundingBox(maxLat, maxLong, minLat, minLong);
-        mapView.post(new Runnable() {
-            @Override
-            public void run() {
-                mapView.zoomToBoundingBox(boundingBox.increaseByScale(1.3f),false);
-            }
-        });
+            BoundingBox boundingBox = new BoundingBox(maxLat, maxLong, minLat, minLong);
+            mapView.post(new Runnable() {
+                @Override
+                public void run() {
+                    mapView.zoomToBoundingBox(boundingBox.increaseByScale(1.3f), false);
+                }
+            });
+        }
     }
 
     @Override

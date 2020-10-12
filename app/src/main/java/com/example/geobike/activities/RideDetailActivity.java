@@ -82,8 +82,8 @@ public class RideDetailActivity extends AppCompatActivity {
                     try{
                         Log.e("RideDetailActivity", "Traçage ligne");
                         List<GeoPoint> trajet = ride1.getLocations().stream()
-                                .sorted((o1, o2) -> o1.getId().compareTo(o2.getId()))
-                                .map(location -> new GeoPoint(location.getLongitude(), location.getLatitude()))
+                                .sorted((o1, o2) -> o1.getDateInstant().compareTo(o2.getDateInstant()))
+                                .map(location -> new GeoPoint(location.getLatitude(), location.getLongitude()))
                                 .collect(Collectors.toList());
 
                         Double maxLat = trajet.stream()
