@@ -43,4 +43,9 @@ public class RideAdapter extends RecyclerView.Adapter<RideViewHolder> {
         this.rideList = rides;
         notifyDataSetChanged();
     }
+
+    public void clear(){
+        this.rideList.clear();
+        notifyDataSetChanged();
+    }
 }
