@@ -1,6 +1,7 @@
 package com.example.geobike.fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.geobike.adapters.RideAdapter;
 import com.example.geobike.R;
@@ -117,6 +119,7 @@ public class RideFragment extends Fragment {
 
                 @Override
                 public void onError(@io.reactivex.rxjava3.annotations.NonNull Throwable e) {
+                    Log.e("RideFragment", "error " + e);
 
                 }
 
