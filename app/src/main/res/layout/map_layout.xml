@@ -40,6 +40,23 @@
                     android:contentDescription="@string/shared_string_my_location"
                     android:src="@drawable/map_my_location" />
             </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center"
+                android:layout_marginRight="@dimen/map_button_margin"
+                android:layout_marginBottom="@dimen/map_button_margin">
+
+                <ImageButton
+                    android:id="@+id/map_record"
+                    android:layout_width="@dimen/map_small_button_size"
+                    android:layout_height="@dimen/map_small_button_size"
+                    android:layout_gravity="bottom"
+                    android:background="@drawable/record_off"
+                    android:contentDescription="@string/shared_string_my_location"
+                    />
+            </FrameLayout>
         </FrameLayout>
 
     </FrameLayout>
