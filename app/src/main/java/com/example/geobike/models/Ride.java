@@ -53,4 +53,16 @@ public class Ride {
     public void setLocations(Set<Location> locations) {
         this.locations = locations;
     }
+
+    @Override
+    public String toString() {
+        String res =  "Ride{" +
+                "id=" + id +
+                ", name='" + name + '\'';
+                for(Location loc : locations){
+                    res += ", locations=" + loc.toString() ;
+                }
+                res+='}';
+                return res;
+    }
 }
