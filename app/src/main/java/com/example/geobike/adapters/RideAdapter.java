@@ -7,15 +7,19 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.geobike.models.Ride;
 import com.example.geobike.viewholder.RideViewHolder;
 import com.example.geobike.R;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class RideAdapter extends RecyclerView.Adapter<RideViewHolder> {
-    private String[] mDataset;
+    private List<Ride> rideList;
 
-    public RideAdapter(String[] mDataset) {
-        this.mDataset = mDataset;
+    public RideAdapter() {
+        this.rideList = new ArrayList<>();
     }
 
     @NonNull
@@ -27,11 +31,16 @@ public class RideAdapter extends RecyclerView.Adapter<RideViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull RideViewHolder holder, int position) {
-        holder.bind(mDataset[position]);
+        holder.bind(rideList.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return mDataset.length;
+        return rideList.size();
+    }
+
+    public void setRides(List<Ride> rides) {
+        this.rideList = rides;
+        notifyDataSetChanged();
     }
 }
