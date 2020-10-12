@@ -4,6 +4,7 @@ import android.app.Application;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
+import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -54,8 +55,13 @@ public class BikeRepository {
     public Observable<Bike> getOneBike(Long id){
         return bikeService.getOneBike(id)
             .doOnNext(bike -> {
-                byte[] bytes = Base64.decode(bike.getImage(), Base64.DEFAULT);
-                bike.setImageBitmap(BitmapFactory.decodeByteArray(bytes, 0, bytes.length));
+                try{
+                    byte[] bytes = Base64.decode(bike.getImage(), Base64.DEFAULT);
+                    bike.setImageBitmap(BitmapFactory.decodeByteArray(bytes, 0, bytes.length));
+                }catch (NullPointerException e){
+                    Log.e("BikeRepository", "No bike image " + e);
+                }
+
         });
     }
 
