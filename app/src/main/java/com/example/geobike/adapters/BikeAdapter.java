@@ -48,7 +48,7 @@ public class BikeAdapter extends RecyclerView.Adapter<BikeViewHolder> implements
 
     @Override
     public int getItemCount() {
-        Log.e("bike adapter: ", bikeList.size()+"");
+        Log.d("bike adapter: ", bikeList.size()+"");
         return bikeList.size();
     }
 

@@ -50,6 +50,7 @@ public class BikeRepository {
 //        return bikeData;
         return null;
     }
+
     public Observable<Bike> getOneBike(Long id){
         return bikeService.getOneBike(id)
             .doOnNext(bike -> {

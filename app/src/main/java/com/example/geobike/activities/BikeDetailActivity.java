@@ -1,7 +1,5 @@
 package com.example.geobike.activities;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
@@ -11,10 +9,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.bumptech.glide.Glide;
 import com.example.geobike.R;
 import com.example.geobike.models.Bike;
-import com.example.geobike.utils.GlideApp2;
 import com.example.geobike.viewmodel.BikeViewModel;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;

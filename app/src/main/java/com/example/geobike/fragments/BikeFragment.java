@@ -37,7 +37,6 @@ public class BikeFragment extends Fragment implements OnStartDragListener {
     private BikeViewModel bikeViewModel;
     private ItemTouchHelper mItemTouchHelper;
     public BikeAdapter bikeAdapter;
-    private List<Bike> bikess;
 
     public static BikeFragment newInstance() {
         return (new BikeFragment());
@@ -53,14 +52,13 @@ public class BikeFragment extends Fragment implements OnStartDragListener {
         View view = inflater.inflate(R.layout.fragment_bike, container, false);
 
         bikeAdapter = new BikeAdapter(this);
-        RecyclerView.Adapter mAdapter = bikeAdapter;
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getActivity(), 2);
 
 
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(mAdapter);
+        recyclerView.setAdapter(bikeAdapter);
 
         ItemTouchHelper.Callback callback = new SimpleItemTouchHelperCallback(bikeAdapter);
         mItemTouchHelper = new ItemTouchHelper(callback);
@@ -93,18 +91,18 @@ public class BikeFragment extends Fragment implements OnStartDragListener {
 
                     @Override
                     public void onNext(@io.reactivex.rxjava3.annotations.NonNull List<Bike> bikes) {
-                        Log.e("BikeFragment", " onNext");
+                        Log.d("BikeFragment", " onNext");
                         bikeAdapter.setBikes(bikes);
                     }
 
                     @Override
                     public void onError(@io.reactivex.rxjava3.annotations.NonNull Throwable e) {
-                        Log.e("BikeFragment", " onError: " + e);
+                        Log.d("BikeFragment", " onError: " + e);
                     }
 
                     @Override
                     public void onComplete() {
-                        Log.e("BikeFragment", " onComplete");
+                        Log.d("BikeFragment", " onComplete");
                     }
                 });
 //        bikeViewModel = new ViewModelProvider.AndroidViewModelFactory(getActivity().getApplication()).create(BikeViewModel.class);
