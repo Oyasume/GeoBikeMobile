@@ -51,6 +51,48 @@ public class RideFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(rideAdapter);
 
+        SwipeRefreshLayout swipeContainer = (SwipeRefreshLayout) view.findViewById(R.id.swipeContainer);
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // Your code to refresh the list here.
+                // Make sure you call swipeContainer.setRefreshing(false)
+                // once the network request has completed successfully.
+
+                rideViewModel.getAllRideLiveData()
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(new Observer<List<Ride>>() {
+                            @Override
+                            public void onSubscribe(@io.reactivex.rxjava3.annotations.NonNull Disposable d) {
+
+                            }
+
+                            @Override
+                            public void onNext(@io.reactivex.rxjava3.annotations.NonNull List<Ride> rides) {
+                                rideAdapter.clear();
+                                rideAdapter.setRides(rides);
+                                swipeContainer.setRefreshing(false);
+                            }
+
+                            @Override
+                            public void onError(@io.reactivex.rxjava3.annotations.NonNull Throwable e) {
+
+                            }
+
+                            @Override
+                            public void onComplete() {
+
+                            }
+                        });
+
+            }
+        });
+        swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
+
         rideViewModel = new ViewModelProvider.AndroidViewModelFactory(getActivity().getApplication()).create(RideViewModel.class);
         return view;
     }
