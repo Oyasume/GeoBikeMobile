@@ -31,4 +31,8 @@ public class RideViewModel extends AndroidViewModel {
     public Observable<Ride> getOneBikeLiveData(Long id){
         return rideRepository.getOneRide(id);
     }
+
+    public Observable<Ride> registerRide(Ride ride){
+        return rideRepository.regiseterRide(ride);
+    }
 }

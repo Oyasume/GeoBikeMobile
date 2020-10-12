@@ -1,6 +1,7 @@
 package com.example.geobike.repositories;
 
 import android.app.Application;
+import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -35,6 +36,11 @@ public class RideRepository {
 
     public Observable<List<Ride>> getAllRide(){
         return rideService.getAllRide();
+    }
+
+    public Observable<Ride> regiseterRide(Ride ride){
+        Log.e("RideRepository", ride.toString());
+        return rideService.registerRide(ride);
     }
 
     public LiveData<Ride> getOneRide2(Long id){
